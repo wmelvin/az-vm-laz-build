@@ -3,6 +3,7 @@
 . ./az-steps-0-init.ps1
 
 WriteLog "BEGIN: az-steps-2-storage"
+$beginTime = Get-Date
 
 Say "`nSTEP - Create Storage Account: $($opts.storageAcctName)`n"
 
@@ -44,4 +45,4 @@ az storage container create `
 --account-name $opts.storageAcctName `
 --name $opts.containerPrivate
 
-WriteLog "END: az-steps-2-storage"
+WriteLog "END: az-steps-2-storage (run time $((New-TimeSpan $beginTime (Get-Date)).ToString()))"
