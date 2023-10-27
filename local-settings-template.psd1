@@ -1,4 +1,11 @@
+
+# There are two replacement tags that can be used in the settings below:
+#   %USERPROFILE%   -  The user's profile directory which comes from the environment variable $env:USERPROFILE.
+#   %PROJECT_ROOT%  -  The root of the project directory as specified in the 'projectRoot' setting.
+
 @{
+    projectRoot = "<PATH_TO_PROJECT_ROOT>"
+    
     baseTag = "demo"
     
     uniqTag = "123"
@@ -16,18 +23,18 @@
     
     credsFile = "<PATH_TO_CREDS_FILE>"
 
-    azcopyPath = "..\Uploads\azcopy.exe"
+    azcopyPath = "%PROJECT_ROOT%\Uploads\azcopy.exe"
     
     #  Update the following line to match the path to your Lazarus installer file.
-    lazInstallerPath = "..\Uploads\lazarus-2.2.6-fpc-3.2.2-win32.exe"
+    lazInstallerPath = "%PROJECT_ROOT%\Uploads\lazarus-2.2.6-fpc-3.2.2-win32.exe"
     
     #  Update the following line to match the path to your Portable Git installer file.
-    gitInstallerPath = "..\Uploads\PortableGit-2.42.0.2-64-bit.7z.exe"
+    gitInstallerPath = "%PROJECT_ROOT%\Uploads\PortableGit-2.42.0.2-64-bit.7z.exe"
     
     #  If you are using a downloaded source archive, instead of cloning a Git
     #  repository, update the following line to match the path to your zip
     #  file to be uploaded.
-    srcZipPath = "..\Uploads\<YOUR_ZIP_FILE>"
+    srcZipPath = "%PROJECT_ROOT%\Uploads\<YOUR_ZIP_FILE>"
 
     #  When the repository is cloned, or the archive extacted, the Lazarus project
     #  file will be in the following directory path under the directory where 
@@ -39,7 +46,7 @@
     outputFileName = "<PROJECT_NAME>.exe"
 
     #  Log file created on the local host (not the VM). Set to blank to disable.
-    logFileName = ".\MessageLog.txt"
+    logFileName = "%PROJECT_ROOT%\MessageLog.txt"
 }
 
 

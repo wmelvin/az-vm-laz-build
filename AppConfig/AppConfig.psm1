@@ -8,15 +8,17 @@ function Get-AppConfig {
 
     $config = Import-PowerShellDataFile -Path $Path
 
+    $config.projectRoot = [IO.Path]::TrimEndingDirectorySeparator($config.projectRoot.Replace("%USERPROFILE%", $env:USERPROFILE))
+
     $config.credsFile = $config.credsFile.Replace("%USERPROFILE%", $env:USERPROFILE)
 
-    $config.lazInstallerPath = [IO.Path]::GetFullPath($config.lazInstallerPath)
-    $config.gitInstallerPath = [IO.Path]::GetFullPath($config.gitInstallerPath)
-    $config.azcopyPath = [IO.Path]::GetFullPath($config.azcopyPath)
-    $config.srcZipPath = [IO.Path]::GetFullPath($config.srcZipPath)
+    $config.lazInstallerPath = $config.lazInstallerPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
+    $config.gitInstallerPath =$config.gitInstallerPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
+    $config.azcopyPath = $config.azcopyPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
+    $config.srcZipPath = $config.srcZipPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
     
     if ([bool]$config.logFileName) {
-        $config.logFileName = [IO.Path]::GetFullPath($config.logFileName)
+        $config.logFileName = $config.logFileName.Replace("%PROJECT_ROOT%", $config.projectRoot)
     }
 
     $config.Add("baseName", $config.baseTag + $config.uniqTag)
