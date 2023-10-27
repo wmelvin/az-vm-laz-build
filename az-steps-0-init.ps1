@@ -39,6 +39,7 @@ if (0 -eq $GHRepoURI.Length) {
 # ----------------------------------------------------------------------
 # Display the settings.
 
+Say("Settings:")
 Say "rgName = '$($opts.rgName)'"
 Say "rgLocation = '$($opts.rgLocation)'"
 Say "storageAcctName = '$($opts.storageAcctName)'"
@@ -60,3 +61,7 @@ Say "gitInstallerPath = '$($opts.gitInstallerPath)'"
 Say "gitInstallerName = '$($opts.gitInstallerName)'"
 Say "srcZipPath = '$($opts.srcZipPath)'"
 Say "srcZipName = '$($opts.srcZipName)'"
+Say "repoDirName = '$($opts.repoDirName)'"
+Say "lazProjectFileName = '$($opts.lazProjectFileName)'"
+Say "outputFileName = '$($opts.outputFileName)'"
+Say "downloadPath = '$($opts.downloadPath)'"

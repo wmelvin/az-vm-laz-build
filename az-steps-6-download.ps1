@@ -14,7 +14,7 @@ $storageKey = $(az storage account keys list -g $opts.rgName -n $opts.storageAcc
 
 $downloadFileName = $opts.outputFileName
 
-$downloadDest = [IO.Path]::GetFullPath([IO.Path]::Combine("..\Downloads", $downloadFileName))
+$downloadDest = [IO.Path]::Combine($opts.downloadPath, $downloadFileName)
 
 $blobNames = az storage blob list `
 --account-name $opts.storageAcctName `
