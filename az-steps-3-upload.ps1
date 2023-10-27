@@ -2,8 +2,7 @@
 #  Source the initialization script.
 . ./az-steps-0-init.ps1
 
-WriteLog "BEGIN: az-steps-3-upload"
-$beginTime = Get-Date
+$beginTime = LogRunBegin "az-steps-3-upload"
 
 Say "`nSTEP - Prepare to upload files to blob storage`n"
 
@@ -136,4 +135,4 @@ if (0 -lt $opts.srcZipPath.Length) {
   --overwrite true
 }
 
-WriteLog "END: az-steps-3-upload (run time $((New-TimeSpan $beginTime (Get-Date)).ToString()))"
+LogRunEnd "az-steps-3-upload" $beginTime

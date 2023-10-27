@@ -1,4 +1,4 @@
 .vscode/
 local-settings.psd1
-MessageLog.txt
+log-*.txt
 debug.txt

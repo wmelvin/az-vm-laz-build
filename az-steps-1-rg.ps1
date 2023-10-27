@@ -9,8 +9,7 @@
 #  Source the initialization script.
 . ./az-steps-0-init.ps1
 
-WriteLog "BEGIN: az-steps-1-rg"
-$beginTime = Get-Date
+$beginTime = LogRunBegin "az-steps-1-rg"
 
 Say "`nSTEP - Create resource group: $($opts.rgName)`n"
 
@@ -20,4 +19,4 @@ az group create -n $opts.rgName -l $opts.rgLocation
 
 # az group list -o table
 
-WriteLog "END: az-steps-1-rg (run time $((New-TimeSpan $beginTime (Get-Date)).ToString()))"
+LogRunEnd "az-steps-1-rg" $beginTime

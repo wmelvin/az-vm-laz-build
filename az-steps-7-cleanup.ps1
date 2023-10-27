@@ -2,8 +2,7 @@
 #  Source the initialization script.
 . ./az-steps-0-init.ps1
 
-WriteLog "BEGIN: az-steps-7-cleanup"
-$beginTime = Get-Date
+$beginTime = LogRunBegin "az-steps-7-cleanup"
 
 Say "`nSTEP - Shutting down VM '$($opts.vmName)'`n"
 
@@ -18,4 +17,4 @@ Say "`nSTEP - Deleting resource group '$($opts.rgName)'`n"
 
 az group delete --name $opts.rgName --yes
 
-WriteLog "END: az-steps-7-cleanup (run time $((New-TimeSpan $beginTime (Get-Date)).ToString()))"
+LogRunEnd "az-steps-7-cleanup" $beginTime

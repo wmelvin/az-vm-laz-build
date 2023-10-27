@@ -9,7 +9,10 @@ Import-Module .\AppConfig\AppConfig.psm1 -Force
 
 $opts = Get-AppConfig -Path .\local-settings.psd1
 
-SetLogFileName $opts.logFileName
+# SetLogFileName $opts.logFileName
+
+SetLogFileName ([IO.Path]::GetFullPath(".\log-msg.txt"))
+SetRunLogFileName ([IO.Path]::GetFullPath(".\log-run.txt"))
 
 
 # ----------------------------------------------------------------------

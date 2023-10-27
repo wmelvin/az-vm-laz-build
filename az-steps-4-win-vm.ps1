@@ -2,8 +2,7 @@
 #  Source the initialization script.
 . ./az-steps-0-init.ps1
 
-WriteLog "BEGIN: az-steps-4-win-vm"
-$beginTime = Get-Date
+$beginTime = LogRunBegin "az-steps-4-win-vm"
 
 Say "`nSTEP - Create VNet: $($opts.vnetName)`n"
 
@@ -74,4 +73,4 @@ az vm list-ip-addresses -n $opts.vmName -o table
 
 # ----------------------------------------------------------------------
 
-WriteLog "END: az-steps-4-win-vm (run time $((New-TimeSpan $beginTime (Get-Date)).ToString()))"
+LogRunEnd "az-steps-4-win-vm" $beginTime

@@ -7,8 +7,7 @@
 #  Source the initialization script.
 . ./az-steps-0-init.ps1
 
-WriteLog "BEGIN: az-steps-6-download"
-$beginTime = Get-Date
+$beginTime = LogRunBegin "az-steps-6-download"
 
 Say "`nSTEP - Preparing to download from blob storage.`n"
 
@@ -42,4 +41,4 @@ else {
     Yell "Blob not found: $downloadFileName"
 }
 
-WriteLog "END: az-steps-6-download (run time $((New-TimeSpan $beginTime (Get-Date)).ToString()))"
+LogRunEnd "az-steps-6-download" $beginTime
