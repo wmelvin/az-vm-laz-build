@@ -16,6 +16,7 @@ function Get-AppConfig {
     $config.gitInstallerPath =$config.gitInstallerPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
     $config.azcopyPath = $config.azcopyPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
     $config.srcZipPath = $config.srcZipPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
+    $config.downloadPath = $config.downloadPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
     
     if ([bool]$config.logFileName) {
         $config.logFileName = $config.logFileName.Replace("%PROJECT_ROOT%", $config.projectRoot)

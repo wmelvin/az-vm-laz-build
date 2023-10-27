@@ -45,6 +45,8 @@
     
     outputFileName = "<PROJECT_NAME>.exe"
 
+    downloadPath = "%PROJECT_ROOT%\Downloads"
+
     #  Log file created on the local host (not the VM). Set to blank to disable.
     logFileName = "%PROJECT_ROOT%\MessageLog.txt"
 }
