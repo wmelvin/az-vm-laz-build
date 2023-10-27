@@ -2,6 +2,7 @@
 #  Source the initialization script.
 . ./az-steps-0-init.ps1
 
+WriteLog "BEGIN: az-steps-3-upload"
 
 Say "`nSTEP - Prepare to upload files to blob storage`n"
 
@@ -108,3 +109,5 @@ if (0 -lt $opts.srcZipPath.Length) {
   --name $opts.srcZipName `
   --overwrite true
 }
+
+WriteLog "END: az-steps-3-upload"

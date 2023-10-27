@@ -2,6 +2,7 @@
 #  Source the initialization script.
 . ./az-steps-0-init.ps1
 
+WriteLog "BEGIN: az-steps-4-win-vm"
 
 Say "`nSTEP - Create VNet: $($opts.vnetName)`n"
 
@@ -71,3 +72,5 @@ az vm open-port -g $opts.rgName --name $opts.vmName --port "3389"
 az vm list-ip-addresses -n $opts.vmName -o table
 
 # ----------------------------------------------------------------------
+
+WriteLog "END: az-steps-4-win-vm"

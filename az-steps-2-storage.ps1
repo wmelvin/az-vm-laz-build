@@ -2,6 +2,7 @@
 #  Source the initialization script.
 . ./az-steps-0-init.ps1
 
+WriteLog "BEGIN: az-steps-2-storage"
 
 Say "`nSTEP - Create Storage Account: $($opts.storageAcctName)`n"
 
@@ -42,3 +43,5 @@ az storage container create `
 --account-key $storageKey `
 --account-name $opts.storageAcctName `
 --name $opts.containerPrivate
+
+WriteLog "END: az-steps-2-storage"

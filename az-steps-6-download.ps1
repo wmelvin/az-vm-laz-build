@@ -7,6 +7,8 @@
 #  Source the initialization script.
 . ./az-steps-0-init.ps1
 
+WriteLog "BEGIN: az-steps-6-download"
+
 Say "`nSTEP - Preparing to download from blob storage.`n"
 
 #  Get the storage account key.
@@ -38,3 +40,5 @@ if ($blobNames -contains $downloadFileName) {
 else {
     Yell "Blob not found: $downloadFileName"
 }
+
+WriteLog "END: az-steps-6-download"

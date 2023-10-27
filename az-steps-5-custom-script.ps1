@@ -2,6 +2,7 @@
 #  Source the initialization script.
 . ./az-steps-0-init.ps1
 
+WriteLog "BEGIN: az-steps-5-custom-script"
 
 #  https://learn.microsoft.com/en-us/cli/azure/vm/extension/image?view=azure-cli-latest#az-vm-extension-image-list()
 
@@ -103,3 +104,5 @@ Remove-Item .\temp.json
 # https://learn.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-restart()
 
 # az vm restart -g $opts.rgName -n $opts.vmName
+
+WriteLog "END: az-steps-5-custom-script"
