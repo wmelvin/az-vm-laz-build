@@ -90,7 +90,7 @@ if (0 -lt $GHRepoURI.Length) {
     Return
   }
 
-  #  Setup the environment to use git.
+  #  Configure the environment to use git.
   $env:gitdir = "C:\action\PortableGit\cmd"
   $env:Path = $env:gitdir + ';' + $env:Path
 

@@ -6,17 +6,30 @@ function Get-AppConfig {
         [string]$Path
     )
 
+    function ReplaceTags($setting, $projRoot, $uploadsPath) {
+        $setting = $setting.Replace("%USERPROFILE%", $env:USERPROFILE)
+        $setting = $setting.Replace("%PROJECT_ROOT%", $projRoot)
+        $setting = $setting.Replace("%UPLOADS_PATH%", $uploadsPath)
+        return $setting
+    }
+
     $config = Import-PowerShellDataFile -Path $Path
 
     $config.projectRoot = [IO.Path]::TrimEndingDirectorySeparator($config.projectRoot.Replace("%USERPROFILE%", $env:USERPROFILE))
 
+    $projRoot = $config.projectRoot
+
+    $config.baseUploadsPath = ReplaceTags $config.baseUploadsPath $projRoot ""
+
+    $upldPath = $config.baseUploadsPath
+
     $config.credsFile = $config.credsFile.Replace("%USERPROFILE%", $env:USERPROFILE)
 
-    $config.lazInstallerPath = $config.lazInstallerPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
-    $config.gitInstallerPath =$config.gitInstallerPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
-    $config.azcopyPath = $config.azcopyPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
-    $config.srcZipPath = $config.srcZipPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
-    $config.downloadPath = $config.downloadPath.Replace("%PROJECT_ROOT%", $config.projectRoot)
+    $config.lazInstallerPath = ReplaceTags $config.lazInstallerPath $projRoot $upldPath
+    $config.gitInstallerPath = ReplaceTags $config.gitInstallerPath $projRoot $upldPath
+    $config.azcopyPath = ReplaceTags $config.azcopyPath $projRoot $upldPath
+    $config.srcZipPath = ReplaceTags $config.srcZipPath $projRoot $upldPath
+    $config.downloadPath = ReplaceTags $config.downloadPath $projRoot $upldPath
     
     if ([bool]$config.logFileName) {
         $config.logFileName = $config.logFileName.Replace("%PROJECT_ROOT%", $config.projectRoot)

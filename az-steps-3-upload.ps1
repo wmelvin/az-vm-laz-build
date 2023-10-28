@@ -32,7 +32,7 @@ $outStr += "  lazProjectFileName = `"$($opts.lazProjectFileName)`"`n"
 $outStr += "  outputFileName = `"$($opts.outputFileName)`"`n"
 $outStr += "}`n"
 
-$settingsFilePath = [IO.Path]::GetFullPath("..\Uploads\on-vm-settings.psd1")
+$settingsFilePath = [IO.Path]::Combine($opts.baseUploadsPath, "on-vm-settings.psd1")
 $settingsFileName = [IO.Path]::GetFileName($settingsFilePath)
 
 Out-File -FilePath $settingsFilePath -InputObject $outStr -Encoding ascii

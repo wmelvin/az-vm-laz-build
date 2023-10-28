@@ -95,7 +95,7 @@ Remove-Item .\temp.json
 # az vm extension list -g $opts.rgName --vm-name $opts.vmName
 
 
-#  Delete the extension before settings it again.
+#  Delete the extension before setting it again.
 #  https://learn.microsoft.com/en-us/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete()
 
 # az vm extension delete -g $opts.rgName --vm-name $opts.vmName -n $extName
