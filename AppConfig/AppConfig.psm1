@@ -31,10 +31,6 @@ function Get-AppConfig {
     $config.srcZipPath = ReplaceTags $config.srcZipPath $projRoot $upldPath
     $config.downloadPath = ReplaceTags $config.downloadPath $projRoot $upldPath
     
-    if ([bool]$config.logFileName) {
-        $config.logFileName = $config.logFileName.Replace("%PROJECT_ROOT%", $config.projectRoot)
-    }
-
     $config.Add("baseName", $config.baseTag + $config.uniqTag)
     $config.Add("rgName", $config.baseName + "_rg")
     $config.Add("storageAcctName", $config.baseName + "storacct")

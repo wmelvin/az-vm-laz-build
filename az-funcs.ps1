@@ -17,44 +17,44 @@ function Yell([string]$message)
 }
 
 
-$msgLogFileName = ""
+$logMsgFileName = ""
 
-function SetLogFileName([string]$fileName)
+function SetLogMsgFileName([string]$fileName)
 {
-    $script:msgLogFileName = $fileName
+    $script:logMsgFileName = $fileName
 }
 
 function WriteLog([string]$message)
 {
     #  Messages are logged if the msgLogFileName is assigned a value.
-    if (0 -lt $script:msgLogFileName.Length) {
+    if (0 -lt $script:logMsgFileName.Length) {
         $logMsg = "[{0}] {1}" -f (Get-Date).ToString("yyyy-MM-dd HH:mm:ss"), $message.Trim()
-        Out-File -FilePath $script:msgLogFileName -Encoding ascii -Append -InputObject $logMsg
+        Out-File -FilePath $script:logMsgFileName -Encoding ascii -Append -InputObject $logMsg
     }
 }
 
-$runLogFileName = ""
+$logRunFileName = ""
 
-function SetRunLogFileName([string]$fileName)
+function SetLogRunFileName([string]$fileName)
 {
-    $script:runLogFileName = $fileName
+    $script:logRunFileName = $fileName
 }
 
 function LogRunBegin([string]$name)
 {
     $startTime = Get-Date
-    if (0 -lt $script:runLogFileName.Length) {
+    if (0 -lt $script:logRunFileName.Length) {
         $logMsg = "[{0}] BEGIN: {1}" -f $startTime.ToString("yyyy-MM-dd HH:mm:ss"), $name
-        Out-File -FilePath $script:runLogFileName -Encoding ascii -Append -InputObject $logMsg
+        Out-File -FilePath $script:logRunFileName -Encoding ascii -Append -InputObject $logMsg
     }
     return $startTime
 }
 
 function LogRunEnd([string]$name, [datetime]$startTime)
 {
-    if (0 -lt $script:runLogFileName.Length) {
+    if (0 -lt $script:logRunFileName.Length) {
         $endTime = Get-Date
         $logMsg = "[{0}] END: {1} ({2})" -f $endTime.ToString("yyyy-MM-dd HH:mm:ss"), $name, (New-TimeSpan $startTime $endTime).ToString()
-        Out-File -FilePath $script:runLogFileName -Encoding ascii -Append -InputObject $logMsg
+        Out-File -FilePath $script:logRunFileName -Encoding ascii -Append -InputObject $logMsg
     }
 }
