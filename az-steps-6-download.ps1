@@ -30,12 +30,13 @@ if ($blobNames -contains $downloadFileName) {
         Remove-Item $downloadDest
     }
     Say "`nDownloading '$downloadFileName'`n"
-    az storage blob download `
+    $result = az storage blob download `
     --account-name $opts.storageAcctName `
     --account-key $storageKey `
     --file $downloadDest `
     --container-name $opts.containerPrivate `
     --name $downloadFileName
+    $result | Out-Null
 }
 else {
     Yell "Blob not found: $downloadFileName"
