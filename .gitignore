@@ -2,3 +2,4 @@
 local-settings.psd1
 log-*.txt
 debug.txt
+temp*.*

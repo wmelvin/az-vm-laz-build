@@ -86,6 +86,8 @@ az vm extension set `
 #  Delete the temporary file.
 Remove-Item .\temp.json
 
+LogRunEnd "az-steps-5-custom-script" $beginTime
+
 
 # ----------------------------------------------------------------------
 #  Additional commands to run manually (F8):
@@ -104,5 +106,3 @@ Remove-Item .\temp.json
 # https://learn.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az-vm-restart()
 
 # az vm restart -g $opts.rgName -n $opts.vmName
-
-LogRunEnd "az-steps-5-custom-script" $beginTime
