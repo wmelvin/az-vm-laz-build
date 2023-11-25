@@ -10,7 +10,7 @@ This project does not use Lazarus, or Free Pascal. It supports building a Window
 
 ---
 
-The source project being built is developed using the Lazarus IDE running on Linux. A Linux executable is created in that environment. This set of scripts affords building a Windows executable, on a Windows 11 VM, using the Windows version of Lazarus, in a (mostly) automated way.
+The [source project](https://github.com/wmelvin/ImagePicker) being built is developed using the Lazarus IDE running on Linux. A Linux executable is created in that environment. This set of scripts affords building a Windows executable, on a Windows 11 VM, using the Windows version of Lazarus, in a (mostly) automated way.
 
 The scripts are organized in steps that can be run individually.
 
