@@ -139,9 +139,10 @@ if (-not (Test-Path $lazProjFile)) {
 
 Set-RunLocation $srcHome
 $cmdPath = 'C:\lazarus\lazbuild.exe'
-$argList = "$($config.lazProjectFileName)"
+$argList = "$($config.lazProjectFileName) --build-all --verbose"
+$outputFile = ".\laz-build-windows-output.txt"
 ($cmdPath + ' ' + $argList) >> .\debug.txt
-Start-Process -FilePath $cmdPath -ArgumentList $argList -Wait
+Start-Process -FilePath $cmdPath -ArgumentList $argList -Wait -RedirectStandardOutput $outputFile
 
 if (-not (Test-Path $outExe)) {
   $errmsg = "Failed to build executable."
@@ -159,3 +160,11 @@ $dst = $FilesURI  # URI must include SAS with Create permission.
 
 $cmd = "&`".\azcopy.exe`" cp `"$outExe`" `"$dst`" --overwrite=true"
 Invoke-Cmd $cmd
+
+#  Copy the redirected output from the build to blob storage using azcopy.
+
+$buildOutput = "$srcHome\laz-build-windows-output.txt"
+if (Test-Path $buildOutput) {
+  $cmd = "&`".\azcopy.exe`" cp `"$buildOutput`" `"$dst`" --overwrite=true"
+  Invoke-Cmd $cmd
+}

@@ -48,6 +48,8 @@
     
     outputFileName = "<PROJECT_NAME>.exe"
 
+    outputLogName = "laz-build-windows-output.txt"
+
     downloadPath = "%PROJECT_ROOT%\Downloads"
 }
 
