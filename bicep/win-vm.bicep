@@ -22,9 +22,6 @@ param vm_user string
 @secure()
 param vm_pass string
 
-// @description('Prefix for resource names not passed as params.')
-// param name_prefix string = 'demo999'
-
 @description('Name of the Public IP Address to create.')
 param pip_name string
 
@@ -39,19 +36,6 @@ param subnet_name string
 
 @description('Name of the Network Interface Card to create.')
 param nic_name string
-
-/* 
-This was failing because "array index '1' is out of bounds"
-The vm_image_urn param was delimited by colons, but image_parts[1] was out of bounds,
-so maybe there is something about using 'split' that I am missing.
-I will hardcode the image parts for now to test the rest of the template.
-
-// 'MicrosoftWindowsDesktop:windows-11:win11-22h2-pro:22621.2283.230901'
-var image_publisher = 'MicrosoftWindowsDesktop'
-var image_offer = 'windows-11'
-var image_sku = 'win11-22h2-pro'
-var image_version = '22621.2283.230901'
-*/
 
 // Split the image URN into its parts.
 var image_parts = split(vm_image_urn, ':')
