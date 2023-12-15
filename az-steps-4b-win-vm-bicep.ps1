@@ -36,4 +36,4 @@ az deployment group create `
 
 # ----------------------------------------------------------------------
 
-LogRunEnd "az-steps-4-win-vm" $beginTime
+LogRunEnd "az-steps-4b-win-vm-bicep" $beginTime
