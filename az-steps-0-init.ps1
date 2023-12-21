@@ -1,9 +1,13 @@
 Set-StrictMode -Version Latest
+$ErrorActionPreference = "Stop"
 
 # ----------------------------------------------------------------------
 #  Source the function definitions.
 
 . .\az-funcs.ps1
+
+# ----------------------------------------------------------------------
+#  Load configuration settings.
 
 Import-Module .\AppConfig\AppConfig.psm1 -Force
 
@@ -13,6 +17,31 @@ SetLogMsgFileName ([IO.Path]::GetFullPath(".\log-msg.txt"))
 
 SetLogRunFileName ([IO.Path]::GetFullPath(".\log-run.txt"))
 
+# ----------------------------------------------------------------------
+#  Check some path and file settings.
+
+if (! [IO.Directory]::Exists($opts.projectRoot)) {
+    Yell "ERROR: The project root directory '$($opts.projectRoot)' does not exist."
+    Exit 1
+}
+
+# check exists $opts.lazInstallerPath
+if (! [IO.File]::Exists($opts.lazInstallerPath)) {
+    Yell "ERROR: The Lazarus installer file '$($opts.lazInstallerPath)' does not exist."
+    Exit 1
+}
+
+# $opts.gitInstallerPath
+if (! [IO.File]::Exists($opts.gitInstallerPath)) {
+    Yell "ERROR: The Git installer file '$($opts.gitInstallerPath)' does not exist."
+    Exit 1
+}
+
+# $opts.azcopyPath
+if (! [IO.File]::Exists($opts.azcopyPath)) {
+    Yell "ERROR: The AzCopy executable file '$($opts.azcopyPath)' does not exist."
+    Exit 1
+}
 
 # ----------------------------------------------------------------------
 # Get credentials and keys from a file in a local encrypted folder.
@@ -36,7 +65,6 @@ if (0 -eq $GHRepoURI.Length) {
     Write-Host "Failed to get GitHub repo URI from '$($opts.credsFile)'."
     Exit 1
 }
-
 
 # ----------------------------------------------------------------------
 # Display the settings.
