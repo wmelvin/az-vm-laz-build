@@ -37,6 +37,12 @@ if (! [IO.File]::Exists($opts.gitInstallerPath)) {
     Exit 1
 }
 
+# $opts.ahkInstallerPath
+if (! [IO.File]::Exists($opts.ahkInstallerPath)) {
+    Yell "ERROR: The AutoHotKey installer file '$($opts.ahkInstallerPath)' does not exist."
+    Exit 1
+}
+
 # $opts.azcopyPath
 if (! [IO.File]::Exists($opts.azcopyPath)) {
     Yell "ERROR: The AzCopy executable file '$($opts.azcopyPath)' does not exist."
@@ -89,6 +95,8 @@ Say "lazInstallerPath = '$($opts.lazInstallerPath)'"
 Say "lazInstallerName = '$($opts.lazInstallerName)'"
 Say "gitInstallerPath = '$($opts.gitInstallerPath)'"
 Say "gitInstallerName = '$($opts.gitInstallerName)'"
+Say "ahkInstallerPath = '$($opts.ahkInstallerPath)'"
+Say "ahkInstallerName = '$($opts.ahkInstallerName)'"
 Say "srcZipPath = '$($opts.srcZipPath)'"
 Say "srcZipName = '$($opts.srcZipName)'"
 Say "repoDirName = '$($opts.repoDirName)'"

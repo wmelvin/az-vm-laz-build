@@ -29,10 +29,13 @@
     azcopyPath = "%UPLOADS_PATH%\azcopy.exe"
     
     #  Update the following line to match the path to your Lazarus installer file.
-    lazInstallerPath = "%UPLOADS_PATH%\lazarus-2.2.6-fpc-3.2.2-win32.exe"
+    lazInstallerPath = "%UPLOADS_PATH%\lazarus-3.0-fpc-3.2.2-win64.exe"
     
     #  Update the following line to match the path to your Portable Git installer file.
     gitInstallerPath = "%UPLOADS_PATH%\PortableGit-2.42.0.2-64-bit.7z.exe"
+
+    #  Update the following line to match the path to your AutoHotKey zip file.
+    ahkInstallerPath = "%PROJECT_ROOT%\Uploads\AutoHotkey_2.0.11.zip"
     
     #  If you are using a downloaded source archive, instead of cloning a Git
     #  repository, update the following line to match the path to your zip

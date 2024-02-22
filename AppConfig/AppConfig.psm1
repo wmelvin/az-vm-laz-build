@@ -27,6 +27,7 @@ function Get-AppConfig {
 
     $config.lazInstallerPath = ReplaceTags $config.lazInstallerPath $projRoot $upldPath
     $config.gitInstallerPath = ReplaceTags $config.gitInstallerPath $projRoot $upldPath
+    $config.ahkInstallerPath = ReplaceTags $config.ahkInstallerPath $projRoot $upldPath
     $config.azcopyPath = ReplaceTags $config.azcopyPath $projRoot $upldPath
     $config.srcZipPath = ReplaceTags $config.srcZipPath $projRoot $upldPath
     $config.downloadPath = ReplaceTags $config.downloadPath $projRoot $upldPath
@@ -43,6 +44,7 @@ function Get-AppConfig {
     $config.Add("azcopyName", [System.IO.Path]::GetFileName($config.azcopyPath))
     $config.Add("lazInstallerName", [System.IO.Path]::GetFileName($config.lazInstallerPath))
     $config.Add("gitInstallerName", [System.IO.Path]::GetFileName($config.gitInstallerPath))
+    $config.Add("ahkInstallerName", [System.IO.Path]::GetFileName($config.ahkInstallerPath))
     $config.Add("srcZipName", [System.IO.Path]::GetFileName($config.srcZipPath))
     
     return $config

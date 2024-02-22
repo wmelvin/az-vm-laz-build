@@ -26,6 +26,7 @@ if (0 -lt $opts.srcZipPath.Length) {
 $outStr = "@{`n"
 $outStr += "  lazInstallerName = `"$($opts.lazInstallerName)`"`n"
 $outStr += "  gitInstallerName = `"$($opts.gitInstallerName)`"`n"
+$outStr += "  ahkInstallerName = `"$($opts.ahkInstallerName)`"`n"
 $outStr += "  srcZipName = `"$($opts.srcZipName)`"`n"
 $outStr += "  repoDirName = `"$($opts.repoDirName)`"`n"
 $outStr += "  lazProjectFileName = `"$($opts.lazProjectFileName)`"`n"
@@ -120,6 +121,16 @@ if (-not ($blobsPrivate -contains $opts.gitInstallerName)) {
   --file $opts.gitInstallerPath `
   --container-name $opts.containerPrivate `
   --name $opts.gitInstallerName
+}
+
+#  Upload the AutoHotKey installer if not already present.
+if (-not ($blobsPrivate -contains $opts.ahkInstallerName)) {
+  az storage blob upload `
+  --account-name $opts.storageAcctName `
+  --account-key $storageKey `
+  --file $opts.ahkInstallerPath `
+  --container-name $opts.containerPrivate `
+  --name $opts.ahkInstallerName
 }
 
 #  Upload the source code zip archive. Overwrite if already present.
