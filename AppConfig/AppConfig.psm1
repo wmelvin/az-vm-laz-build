@@ -30,6 +30,7 @@ function Get-AppConfig {
     $config.ahkInstallerPath = ReplaceTags $config.ahkInstallerPath $projRoot $upldPath
     $config.azcopyPath = ReplaceTags $config.azcopyPath $projRoot $upldPath
     $config.srcZipPath = ReplaceTags $config.srcZipPath $projRoot $upldPath
+    $config.kitZipPath = ReplaceTags $config.kitZipPath $projRoot $upldPath
     $config.downloadPath = ReplaceTags $config.downloadPath $projRoot $upldPath
     
     $config.Add("baseName", $config.baseTag + $config.uniqTag)
@@ -46,6 +47,7 @@ function Get-AppConfig {
     $config.Add("gitInstallerName", [System.IO.Path]::GetFileName($config.gitInstallerPath))
     $config.Add("ahkInstallerName", [System.IO.Path]::GetFileName($config.ahkInstallerPath))
     $config.Add("srcZipName", [System.IO.Path]::GetFileName($config.srcZipPath))
+    $config.Add("kitZipName", [System.IO.Path]::GetFileName($config.kitZipPath))
     
     return $config
 }

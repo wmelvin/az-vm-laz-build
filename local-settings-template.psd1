@@ -41,6 +41,11 @@
     #  repository, update the following line to match the path to your zip
     #  file to be uploaded.
     srcZipPath = "%UPLOADS_PATH%\<YOUR_ZIP_FILE>"
+    
+    #  If any additional files are needed on the VM, update the following line
+    #  to match the path to your zip file to be uploaded.
+    #  If no additional files are needed, set the value to an empty string.
+    kitZipPath = "%PROJECT_ROOT%\Uploads\UploadKit.zip"
 
     #  When the repository is cloned, or the archive extacted, the Lazarus project
     #  file will be in the following directory path under the directory where 
@@ -60,7 +65,7 @@
 #  Alternate vmImageUrn values:
 
 #  Windows 11 with Visual Studio
-# vmImageUrn = "MicrosoftVisualStudio:visualstudio2022:vs-2022-comm-latest-win11-n-gen2:2023.02.28"
+# vmImageUrn = "MicrosoftVisualStudio:visualstudio2022:vs-2022-comm-latest-win11-n-gen2:2024.02.15"
 
 #  Windows Server 2019
 # vmImageUrn = "MicrosoftWindowsServer:WindowsServer:2019-datacenter-smalldisk-g2:17763.4851.230905"

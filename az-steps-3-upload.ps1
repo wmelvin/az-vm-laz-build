@@ -18,6 +18,13 @@ if (0 -lt $opts.srcZipPath.Length) {
   }
 }
 
+if ($opts.kitZipPath.Length -gt 0) {
+  if (-not (Test-Path $opts.kitZipPath)) {
+    Yell "`nFile not found: $($opts.kitZipPath)"
+    Exit
+  }
+}
+
 
 #  Create a settings file to upload.
 #  This file can be read by Import-PowerShellDataFile
@@ -28,6 +35,7 @@ $outStr += "  lazInstallerName = `"$($opts.lazInstallerName)`"`n"
 $outStr += "  gitInstallerName = `"$($opts.gitInstallerName)`"`n"
 $outStr += "  ahkInstallerName = `"$($opts.ahkInstallerName)`"`n"
 $outStr += "  srcZipName = `"$($opts.srcZipName)`"`n"
+$outStr += "  kitZipName = `"$($opts.kitZipName)`"`n"
 $outStr += "  repoDirName = `"$($opts.repoDirName)`"`n"
 $outStr += "  lazProjectFileName = `"$($opts.lazProjectFileName)`"`n"
 $outStr += "  outputFileName = `"$($opts.outputFileName)`"`n"
@@ -145,5 +153,17 @@ if (0 -lt $opts.srcZipPath.Length) {
   --name $opts.srcZipName `
   --overwrite true
 }
+
+#  Upload the zip archive containing any additional kit. Overwrite if already present.
+if (0 -lt $opts.kitZipPath.Length) {
+  az storage blob upload `
+  --account-name $opts.storageAcctName `
+  --account-key $storageKey `
+  --file $opts.kitZipPath `
+  --container-name $opts.containerPrivate `
+  --name $opts.kitZipName `
+  --overwrite true
+}
+
 
 LogRunEnd "az-steps-3-upload" $beginTime

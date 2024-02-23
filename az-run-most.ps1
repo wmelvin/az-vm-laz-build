@@ -3,7 +3,7 @@
 
 . ./az-steps-0-init.ps1
 
-$runAllBeginTime = LogRunBegin "az-run-most"
+$runMostBeginTime = LogRunBegin "az-run-most"
 
 ./az-steps-1-rg.ps1
 ./az-steps-2-storage.ps1
@@ -17,4 +17,4 @@ $runAllBeginTime = LogRunBegin "az-run-most"
 
 Yell "`nRemember to delete the resource group when you're done!`n"
 
-LogRunEnd "az-run-most" $runAllBeginTime
+LogRunEnd "az-run-most" $runMostBeginTime

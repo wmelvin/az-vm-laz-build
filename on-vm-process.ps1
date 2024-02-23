@@ -73,7 +73,6 @@ if (-not (Test-Path "C:\lazarus\lazbuild.exe")) {
   Return
 }
 
-
 if (0 -lt $GHRepoURI.Length) {
   #  If a GitHub repo URI is specified, clone the repo using the URI.
 
@@ -116,6 +115,30 @@ else {
 
   #  Extract the source code archive. Use -Force to overwrite existing files.
   Expand-Archive -LiteralPath ".\$($config.srcZipName)" -DestinationPath C:\action -Force
+}
+
+#  If there is an AutoHotKey installer zip file, extract it.
+if ($config.ahkInstallerName.Length -gt 0) {
+
+  if (-not (Test-Path ".\$($config.ahkInstallerName)")) {
+    $errmsg = "Cannot find $($config.ahkInstallerName)"
+    Write-Host $errmsg
+    $errmsg >> .\error.txt
+    Return
+  }
+  Expand-Archive -LiteralPath ".\$($config.ahkInstallerName)" -DestinationPath C:\action\ahk -Force
+}
+
+#  If there are additional files in the kit, extract them.
+if ($config.kitZipName.Length -gt 0) {
+
+  if (-not (Test-Path ".\$($config.kitZipName)")) {
+    $errmsg = "Cannot find $($config.kitZipName)"
+    Write-Host $errmsg
+    $errmsg >> .\error.txt
+    Return
+  }
+  Expand-Archive -LiteralPath ".\$($config.kitZipName)" -DestinationPath C:\action -Force
 }
 
 
