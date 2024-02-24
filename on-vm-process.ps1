@@ -191,3 +191,10 @@ if (Test-Path $buildOutput) {
   $cmd = "&`".\azcopy.exe`" cp `"$buildOutput`" `"$dst`" --overwrite=true"
   Invoke-Cmd $cmd
 }
+
+# If a post-process script is specified, run it.
+
+if ($config.postProcessScript.Length -gt 0) {
+  $cmd = "&`".\$($config.postProcessScript)`" -FilesURI `"$FilesURI`" -GHRepoURI `"$GHRepoURI`""
+  Invoke-Cmd $cmd
+}

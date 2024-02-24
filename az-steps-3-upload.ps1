@@ -39,6 +39,7 @@ $outStr += "  kitZipName = `"$($opts.kitZipName)`"`n"
 $outStr += "  repoDirName = `"$($opts.repoDirName)`"`n"
 $outStr += "  lazProjectFileName = `"$($opts.lazProjectFileName)`"`n"
 $outStr += "  outputFileName = `"$($opts.outputFileName)`"`n"
+$outStr += "  postProcessScript = `"$($opts.postProcessScript)`"`n"
 $outStr += "}`n"
 
 $settingsFilePath = [IO.Path]::Combine($opts.baseUploadsPath, "on-vm-settings.psd1")

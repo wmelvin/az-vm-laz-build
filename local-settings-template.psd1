@@ -59,6 +59,9 @@
     outputLogName = "laz-build-windows-output.txt"
 
     downloadPath = "%PROJECT_ROOT%\Downloads"
+
+    #  Optional. Script to launch at end of on-vm-process.ps1.
+    postProcessScript = ""
 }
 
 
