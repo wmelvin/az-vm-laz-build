@@ -31,6 +31,7 @@ function Get-AppConfig {
     $config.azcopyPath = ReplaceTags $config.azcopyPath $projRoot $upldPath
     $config.srcZipPath = ReplaceTags $config.srcZipPath $projRoot $upldPath
     $config.kitZipPath = ReplaceTags $config.kitZipPath $projRoot $upldPath
+    $config.kitBuildScript = ReplaceTags $config.kitBuildScript $projRoot $upldPath
     $config.downloadPath = ReplaceTags $config.downloadPath $projRoot $upldPath
     
     $config.Add("baseName", $config.baseTag + $config.uniqTag)

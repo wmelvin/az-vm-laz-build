@@ -11,14 +11,36 @@ if (-not (Test-Path $opts.lazInstallerPath)) {
   Exit
 }
 
-if (0 -lt $opts.srcZipPath.Length) {
+if ($opts.srcZipPath.Length -gt 0) {
   if (-not (Test-Path $opts.srcZipPath)) {
     Yell "`nFile not found: $($opts.srcZipPath)"
     Exit
   }
 }
 
+#  If there are additional files ("kit") to upload in a zip file then
+#  the kitZipPath option will be set to the name of that zip file.
+
 if ($opts.kitZipPath.Length -gt 0) {
+  #  A script to build the zip file each run be specified in the
+  #  kitBuildScript option.
+  if ($opts.kitBuildScript.Length -gt 0) {
+    #  Delete the previous zip file if it exists.
+    if (Test-Path $opts.kitZipPath) {
+      Remove-Item $opts.kitZipPath
+    }
+    #  Save the current directory.
+    $currentDir = Get-Location
+    #  Change to the build directory.
+    $kitBuildDir = [IO.Path]::GetDirectoryName($opts.kitBuildScript)
+    Set-Location $kitBuildDir
+    #  Run the build script.
+    . $opts.kitBuildScript
+    #  Change back to the original directory.
+    Set-Location $currentDir
+  }
+  
+  #  Verify that the zip file exists.
   if (-not (Test-Path $opts.kitZipPath)) {
     Yell "`nFile not found: $($opts.kitZipPath)"
     Exit
@@ -145,7 +167,7 @@ if (-not ($blobsPrivate -contains $opts.ahkInstallerName)) {
 #  Upload the source code zip archive. Overwrite if already present.
 #  Source code zip archive is not needed if the repo is to be cloned from 
 #  GitHub instead.
-if (0 -lt $opts.srcZipPath.Length) {
+if ($opts.srcZipPath.Length -gt 0) {
   az storage blob upload `
   --account-name $opts.storageAcctName `
   --account-key $storageKey `
@@ -156,7 +178,7 @@ if (0 -lt $opts.srcZipPath.Length) {
 }
 
 #  Upload the zip archive containing any additional kit. Overwrite if already present.
-if (0 -lt $opts.kitZipPath.Length) {
+if ($opts.kitZipPath.Length -gt 0) {
   az storage blob upload `
   --account-name $opts.storageAcctName `
   --account-key $storageKey `
