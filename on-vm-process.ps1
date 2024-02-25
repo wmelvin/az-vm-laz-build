@@ -73,7 +73,7 @@ if (-not (Test-Path "C:\lazarus\lazbuild.exe")) {
   Return
 }
 
-if (0 -lt $GHRepoURI.Length) {
+if ($GHRepoURI.Length -gt 0) {
   #  If a GitHub repo URI is specified, clone the repo using the URI.
 
   #  Extract PortableGit.
