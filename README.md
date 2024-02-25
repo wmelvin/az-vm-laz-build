@@ -14,10 +14,6 @@ The [source project](https://github.com/wmelvin/ImagePicker) being built is deve
 
 The scripts are organized in steps that can be run individually.
 
-When running the scripts individually, the VM can be kept running to use for debugging in the Lazarus IDE, via Remote Desktop, if there are Windows-specific issues.
+The `az-run-all.ps1` script executes all steps from provisioning through deleting the resource group. If all goes well, a Windows version of the Lazarus project is built from source and the resulting executable is downloaded and available locally.
 
-There is also the `az-run-all.ps1` script which executes all the steps from provisioning through deleting the resource group.
-
----
-
-More details to come... (although distraction is a possibility ;-)
+The `az-run-most.ps1` script runs every step **except cleanup**. This can be used to do additional work on the VM, such as testing or debugging, via Remote Desktop.

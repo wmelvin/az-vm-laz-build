@@ -47,6 +47,13 @@
     #  If no additional files are needed, set the value to an empty string.
     kitZipPath = "%PROJECT_ROOT%\Uploads\UploadKit.zip"
 
+    #  If a kitZipPath is specified, update the following line to match the path
+    #  to the script that will be run to build the kit. It is not necessary to
+    #  specify a kitBuildScript if the zip file is created manually and does
+    #  not change. However, if the zip file is created by a script, it ensures
+    #  that the latest files will be included.
+    kitBuildScript = "%PROJECT_ROOT%\UploadKit\_make_zip.ps1"
+
     #  When the repository is cloned, or the archive extacted, the Lazarus project
     #  file will be in the following directory path under the directory where 
     #  processing happens on the VM (C:\action\<SUBPATH>).
