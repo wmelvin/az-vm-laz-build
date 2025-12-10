@@ -22,8 +22,7 @@ if ($opts.srcZipPath.Length -gt 0) {
 #  the kitZipPath option will be set to the name of that zip file.
 
 if ($opts.kitZipPath.Length -gt 0) {
-  #  A script to build the zip file each run be specified in the
-  #  kitBuildScript option.
+  #  A script to build the zip file can be specified in the kitBuildScript option.
   if ($opts.kitBuildScript.Length -gt 0) {
     #  Delete the previous zip file if it exists.
     if (Test-Path $opts.kitZipPath) {

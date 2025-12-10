@@ -1,6 +1,7 @@
 .vscode/
 _older/
 local-settings.psd1
+local-snips.ps1
 log-*.txt
 debug.txt
 temp*.*

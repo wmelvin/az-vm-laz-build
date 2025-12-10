@@ -17,8 +17,8 @@
     
     containerPrivate = "action"
     
-    #  Windows 11 Pro.
-    vmImageUrn =  "MicrosoftWindowsDesktop:windows-11:win11-22h2-pro:22621.2283.230901"
+    #  Windows 11 Pro (as of 2025-12-10).
+    vmImageUrn =  "MicrosoftWindowsDesktop:windows-11:win11-25h2-pro:26200.7462.251207"
     
     vmSize =  "Standard_DS2_v2"
     
@@ -72,16 +72,11 @@
 }
 
 
-#  Alternate vmImageUrn values:
+# ----------------------------------------------------------------------
 
-#  Windows 11 with Visual Studio
-# vmImageUrn = "MicrosoftVisualStudio:visualstudio2022:vs-2022-comm-latest-win11-n-gen2:2024.02.15"
-
-#  Windows Server 2019
-# vmImageUrn = "MicrosoftWindowsServer:WindowsServer:2019-datacenter-smalldisk-g2:17763.4851.230905"
-
-#  Windows Server 2022
-# vmImageUrn = "MicrosoftWindowsServer:WindowsServer:2022-datacenter-smalldisk-g2:20348.887.220806"
-
-#  Windows Server 2022 Azure edition
-# vmImageUrn = "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-smalldisk:20348.887.220806"
+#  The `vmImageUrn` value shown above will be obsolete at some point.
+#  The following command will write the list of images published by Microsoft, and 
+#  available in eastus, to a CSV file on the Desktop.
+#  Change --location as needed.
+#
+# az vm image list --all --location eastus --publisher Microsoft | ConvertFrom-Json | Export-Csv -Path ([IO.Path]::Combine([Environment]::GetFolderPath("Desktop"), "azure-image-list.csv"))
